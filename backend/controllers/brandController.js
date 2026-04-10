@@ -99,7 +99,8 @@ const getapi = async(req,res)=>{
         return sendSuccess(res,"Brand find",{brandApi:data,imagebaseUrl:"http://localhost:5000/images/brand"});
         
     } catch (error) {
-        return sendServerError(res)
+
+    return sendServerError(res)
         
     }
 }

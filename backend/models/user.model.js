@@ -39,7 +39,9 @@ const userSchema= new mongoose.Schema(
             isDefault:{
                 type:Boolean,
                 default:false
-            }
+            },
+            otp: String,
+            otpExpire: Date
 
         
     },

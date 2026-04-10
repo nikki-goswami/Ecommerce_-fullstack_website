@@ -163,6 +163,11 @@
 
 const userModel = require("../models/user.model");
 const Cryptr = require('cryptr');
+const bcrypt = require('bcrypt');
+const { sendEmail } = require("../Transpoter/createTranspoter");
+const nodemailer = require("nodemailer");
+
+
 const { sendServerError, sendAllfeildRequired, sendCreated, sendNotfound, sendSuccess } = require("../utils/responseHelper");
 const cryptr = new Cryptr(process.env.SECRET_KEY); // Make sure SECRET_KEY is correct
 const jwt = require('jsonwebtoken');
@@ -305,4 +310,95 @@ const cookiesget = async (req, res) => {
 
   }
 
-module.exports = { register, login, cookiesget, addressAdd,logout };
+
+
+// const sendOtp = async (req, res) => {
+//   const { email } = req.body;
+
+//   const user = await userModel.findOne({ email });
+//   if (!user) {
+//     return res.status(404).json({ msg: "User not found" });
+//   }
+
+//   // OTP generate (6 digit)
+//   const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+//   user.otp = otp;
+//   user.otpExpire = Date.now() + 5 * 60 * 1000; // 5 min
+
+//   await user.save();
+
+//   // 👉 For now console me print kar do (no email needed)
+//   console.log("OTP:", otp);
+
+//   res.json({ msg: "OTP sent (check console 😄)" });
+// };
+const sendOtp = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    // Check if user exists
+    const user = await userModel.findOne({ email });
+    if (!user) return res.status(404).json({ msg: "User not found" });
+
+    // Generate OTP
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    user.otp = otp;
+    user.otpExpire = Date.now() + 5 * 60 * 1000; // 5 min expiry
+    await user.save();
+
+    // Send OTP email
+    const { success, preview, error } = await sendEmail({
+      to: email,
+      subject: "Your OTP Code",
+      html: `<h3>OTP Verification</h3>
+             <p>Your OTP is: <b>${otp}</b></p>
+             <p>This code will expire in 5 minutes.</p>`
+    });
+
+    if (success) {
+      res.json({ msg: "OTP sent successfully", preview });
+    } else {
+      res.status(500).json({ msg: "Failed to send OTP", error });
+    }
+  } catch (err) {
+    console.error("OTP error:", err);
+    res.status(500).json({ msg: "Server error" });
+  }
+};
+
+
+
+ const resetPasswordWithOtp = async (req, res) => {
+  const { email, otp, password } = req.body;
+
+  const user = await userModel.findOne({
+    email,
+    otp,
+    otpExpire: { $gt: Date.now() },
+  });
+
+  if (!user) {
+    return res.status(400).json({ msg: "Invalid or expired OTP" });
+  }
+
+  // password hash
+  user.password = await bcrypt.hash(password, 10);
+
+  // OTP clear
+  user.otp = undefined;
+  user.otpExpire = undefined;
+
+  await user.save();
+
+  res.json({ msg: "Password reset successful" });
+};
+
+
+
+
+
+
+
+
+module.exports = { register, login, cookiesget, addressAdd,logout,sendOtp,resetPasswordWithOtp };

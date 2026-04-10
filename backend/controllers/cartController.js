@@ -1,4 +1,9 @@
+const mongoose = require("mongoose"); // ✅ added
+
+
 const cartModel = require("../models/cart.model");
+
+
 const { sendServerError, sendSuccess } = require("../utils/responseHelper");
 
 const CartSync = async (req, res) => {
@@ -65,6 +70,10 @@ return res.status(200).json(
     return sendServerError(res);
   }
 };
+
+
+
+// new add here
 
 // const addtoCart = async (req, res) => {
 //   try {
@@ -170,6 +179,9 @@ return res.status(200).json(
 //     return sendServerError(res);
 //   }
 // };
+
+
+
 
 const addtoCart = async (req, res) => {
   try {
