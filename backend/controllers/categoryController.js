@@ -130,7 +130,13 @@ const categoryApi = await categoryModal.find(dynamicFilter).limit(limit);
 //console.log(data)
 
 
-return sendSuccess(res,"Category find",{categoryApi:data,imagebaseUrl:"http://localhost:5000/images/categryimages"});
+return sendSuccess(res,"Category find",{categoryApi:data,
+  // imagebaseUrl:"http://localhost:5000/images/categryimages"
+imagebaseUrl:"https://ecommerce-fullstack-website.onrender.com/images/categryimages"
+
+
+}
+);
         
     } catch (error) {
         return sendServerError(res)

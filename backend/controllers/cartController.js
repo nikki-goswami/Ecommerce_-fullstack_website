@@ -17,8 +17,8 @@ const CartSync = async (req, res) => {
     message:"User cart found",
     Cart: await cartModel.find({userId}).populate('productId'),
     success:true,
-    imagebaseUrl:"http://localhost:5000/images/product/main/"
-
+    // imagebaseUrl:"http://localhost:5000/images/product/main/"
+imagebaseUrl:"https://ecommerce-fullstack-website.onrender.com/images/product/main/"
 
   }
 )

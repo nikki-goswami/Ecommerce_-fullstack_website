@@ -96,7 +96,11 @@ const getapi = async(req,res)=>{
 
 
 
-        return sendSuccess(res,"Brand find",{brandApi:data,imagebaseUrl:"http://localhost:5000/images/brand"});
+        return sendSuccess(res,"Brand find",{brandApi:data,
+          // imagebaseUrl:"http://localhost:5000/images/brand"
+        imagebaseUrl:"https://ecommerce-fullstack-website.onrender.com/images/brand"
+        
+        });
         
     } catch (error) {
 
