@@ -4,23 +4,23 @@ const colorRouter = require("express").Router();
 
 
 
-colorRouter.post("/api/create",create);
-colorRouter.get("/api/findapi",getapi);
+colorRouter.post("/create",create);
+colorRouter.get("/findapi",getapi);
 // ye /:id ke base pr find kr rha h
-colorRouter.patch("/api/status/:id",statusUpdate)
+colorRouter.patch("/status/:id",statusUpdate)
 // ye slug ke base pr find krega h
 //categoryRouter.patch("/status/:slug",statusUpdate)
 
 
 // category delete krne ke liye 
-colorRouter.delete("/api/delete/:id",categorydelete);
+colorRouter.delete("/delete/:id",categorydelete);
 
 colorRouter.get("/:id",getById);
 // getById is function  
 // delete ke liye bana h category 
 
 
-colorRouter.put("/api/update/:id",updateById);
+colorRouter.put("/update/:id",updateById);
 //edit ke liye
 
 

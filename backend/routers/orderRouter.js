@@ -3,7 +3,7 @@ const {orderPlace} = require("../controllers/orderController"); // ✔️
 const OrderRouter = require("express").Router();
 
 
-OrderRouter.post("/api/createOrder",orderPlace);
+OrderRouter.post("/createOrder",orderPlace);
 
 
 
