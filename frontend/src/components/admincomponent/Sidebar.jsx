@@ -41,11 +41,7 @@ export default function Sidebar() {
         link:"/admin/brand",
         icon: FaProductHunt
     },
-    {
-        name:"Cards",
-        link:"/admin/cards",
-        icon:FaProductHunt
-    },
+   
      {
         name:"Product",
         icon: FaProductHunt,
@@ -54,11 +50,7 @@ export default function Sidebar() {
 
         link:"/admin/product"
     },
-    {
-        name:"Settings",
-        link:"/admin/settings",
-        icon:FaProductHunt
-    }
+   
    
 
 ]

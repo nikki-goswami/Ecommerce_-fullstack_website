@@ -6,7 +6,7 @@ import Brandstatus from "@/components/admincomponent/Brandstatus";
 
 export default async function UserTable() {
   const categoriesapidata= await  getbrand();
-  console.log(categoriesapidata)
+  console.log(categoriesapidata,"from cat")
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-2xl shadow-md">
