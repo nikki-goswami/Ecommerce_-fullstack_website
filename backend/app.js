@@ -55,7 +55,15 @@ const cors = require("cors")
 const server = express();
 
 server.use(express.json());
-server.use(cors({origin:"http://localhost:3000",credentials:true})) // credentials:true coookies and ko aane ja jane do 
+server.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://ecommerce-fullstack-website-theta.vercel.app/"
+  ],
+  credentials: true
+}));
+
+// credentials:true coookies and ko aane ja jane do 
 server.use(cookieParser());
 server.use("/category", require("./routers/categoryRouter"));  //ise base url set krna bolte h
 server.use("/brand" ,require("./routers/brandRouter")); // base url set for barnd
