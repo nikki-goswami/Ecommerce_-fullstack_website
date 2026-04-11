@@ -16,7 +16,7 @@ server.use(express.json());
 server.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://ecommerce-fullstack-website-theta.vercel.app/"
+    "https://ecommerce-fullstack-website-theta.vercel.app"
   ],
   credentials: true
 }));
