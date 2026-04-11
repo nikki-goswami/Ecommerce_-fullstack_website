@@ -23,14 +23,14 @@ server.use(cors({
 
 // credentials:true coookies and ko aane ja jane do 
 server.use(cookieParser());
-server.use("/category", require("./routers/categoryRouter"));  //ise base url set krna bolte h
+server.use("/api/category", require("./routers/categoryRouter"));  //ise base url set krna bolte h
 server.use("/brand" ,require("./routers/brandRouter")); // base url set for barnd
 
-server.use("/color",require("./routers/colorRouter"));  // base url set for color
-server.use("/product",require("./routers/productRouter")) ; // base url set for product
-server.use("/userlogin",require("./routers/userRouter"));// base url set h for userlogin
-server.use("/cart",require("./routers/cartRouter"));// base url set h for cart
-server.use("/order",require("./routers/orderRouter"))
+server.use("/api/color",require("./routers/colorRouter"));  // base url set for color
+server.use("/api/product",require("./routers/productRouter")) ; // base url set for product
+server.use("/api/userlogin",require("./routers/userRouter"));// base url set h for userlogin
+server.use("/api/cart",require("./routers/cartRouter"));// base url set h for cart
+server.use("/api/order",require("./routers/orderRouter"))
 
 
 server.use(express.static("public"))
