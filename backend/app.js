@@ -1,46 +1,4 @@
 
-// require('dotenv').config()
-
-// const express= require("express");
-// const mongoose= require("mongoose")
-
-// const server = express();
-
-// server.use(express.json());
-// server.use("/category",require("./routers/categoryRouter"));
-
-
-
-
-// // server.listen(
-// //     "5000",
-// //     ()=>{
-// //             console.log("server is started")
-// //     }
-// // )
-
-
-// mongoose.connect(process.env.DATABASE_URL).then(
-//     ()=>{
-//     console.log("Database connected")
-//         server.listen(
-//     process.env.PORT,
-//     ()=>{
-//         console.log("server is started")
-//     }
-// )
-
-
-//     }
-// ).catch(
-//     (error)=>{
-//         console.log(error)
-//         console.log("Database not conneted")
-
-
-//     }
-// )
-
 
 
 
@@ -58,7 +16,7 @@ server.use(express.json());
 server.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://ecommerce-fullstack-website-theta.vercel.app/"
+    "https://ecommerce-fullstack-website-theta.vercel.app"
   ],
   credentials: true
 }));
