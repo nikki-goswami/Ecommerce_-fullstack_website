@@ -24,7 +24,7 @@ server.use(cors({
 // credentials:true coookies and ko aane ja jane do 
 server.use(cookieParser());
 server.use("/api/category", require("./routers/categoryRouter"));  //ise base url set krna bolte h
-server.use("/brand" ,require("./routers/brandRouter")); // base url set for barnd
+server.use("/api/brand" ,require("./routers/brandRouter")); // base url set for barnd
 
 server.use("/api/color",require("./routers/colorRouter"));  // base url set for color
 server.use("/api/product",require("./routers/productRouter")) ; // base url set for product
